@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="fruit" class="com.test.Fruit"></bean>
+
+<bean id="fruitwithname" class="com.test.Fruit">
+<constructor-arg index="0" value="Apple" />
+<constructor-arg index="1" value="tree" />
+</bean>
+
+
+
+<bean id="fruitwithListAndMap" class="com.test.Fruit">
+<property name="myFruitList">
+	<list>
+		<value>Apple</value>
+		<value>Banana</value>
+		<value>orange</value>
+	</list>
+</property>
+
+<property name="myFruitMap">
+	<map>
+		<entry key="Apple" value="Red" />
+		<entry key="Banana" value="Yellow" />
+		<entry key="Orange" value="Orange" />
+	</map>
+</property>
+</bean>
+
+
+
+<bean id="vegetable" class="com.test.Vegetable"> </bean>
+
+<bean id="vegetablewithname" class="com.test.Vegetable">
+<property name="myName" value="Tomoto"/>
+</bean>	
+
+<bean id="fruitConstruct" class="com.construct.FruitConstruct"></bean>
+<bean id="vegetableConstruct" class="com.construct.VegetableConstruct"></bean>
+<bean id="grainConstruct" class="com.construct.GrainConstruct"></bean>
+
+<bean id="meal" class="com.construct.Meal">
+	<constructor-arg index="0" ref="fruitConstruct"></constructor-arg>
+	<constructor-arg index="1" ref="vegetableConstruct"></constructor-arg>
+	<constructor-arg index="2" ref="grainConstruct"></constructor-arg>
+</bean>
+
+<bean id="mealAlt" class="com.construct.Meal">
+	<constructor-arg name="f" ref="fruitConstruct"></constructor-arg>
+	<constructor-arg name="v" ref="vegetableConstruct"></constructor-arg>
+	<constructor-arg name="g" ref="grainConstruct"></constructor-arg>
+</bean>
+
+
+</beans>
